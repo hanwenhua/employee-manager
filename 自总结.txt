@@ -1,0 +1,15 @@
+1，自己尝试写的一个简单的考勤管理系统，包含管理成员信息以及成员考勤，管理员审批的功能，采用SpringMVC+Hibernate4+Spring搭建
+  完全参考  https://github.com/Sunybyjava/employeeManager  有bug，
+2，这是经过更改后的程序
+3，踩了不少坑，记录一下打开代码的过程。发现idea直接引用该代码有问题，运行起来是jar，也访问不到页面，也不报错，坑死人，无奈，只能自己创建一个了。
+	先自己创建一个maven的web项目，名称employee-manager，包com.suny.manager，
+	分别考入代码src\main下的java、resources、webapp（就是web）
+	应用pom文件内容
+	进入数据库，添加账户到employee表中管理员（admin,admin,emp_type赋值为2）,普通用户（a,b,emp_type赋值为1）
+	进入数据库，表attend_type插入1、2、3、4、5条记录
+	进入页面，先admin进入点击“学生考勤情况”》“点击开启考勤”（字真小）。意思就是允许所有人可以考勤了
+	进入页面，使用a账户登录，点击“签到”
+	进入数据库，找到表attend中刚签到的数据，插入到表application中，`app_result=0，attend_id=签到id，type_id=新的签到类型（1、到、5）
+	进入页面，admin登录，查看“考勤记录审批”，点击通过，则表check_back就会审批的结果了。
+
+
